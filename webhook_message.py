@@ -91,7 +91,7 @@ def send_message(
     return status_code == 200
 
 
-def hermes(app: str, name: str, tag: str = None, timestamp: bool = False):
+def hermes(app: str, name: str, tag: str = None, timestamp: bool = False) -> Callable:
     """
     Decorator to encapsulate a function and `log` its behaviour/progress into an app channel.
 
@@ -103,10 +103,10 @@ def hermes(app: str, name: str, tag: str = None, timestamp: bool = False):
         timestamp (bool) : Whether to display timestamp information at the moment of the request. Defaults to `False`.
     """
 
-    def wrapper(func: Callable) -> Any:
+    def wrapper(func: Callable) -> Callable:
         webhook = get_webhook(app=app, name=name)
 
-        def inner(*args, **kwargs):
+        def inner(*args, **kwargs) -> Any:
             # before calling the function
             send_message(
                 message=f"Calling {func.__name__}",
