@@ -3,9 +3,8 @@ from datetime import datetime
 from time import sleep
 from typing import Any, Callable, Union
 
-from slack_sdk.webhook import WebhookClient
 from discord_webhook import DiscordWebhook
-
+from slack_sdk.webhook import WebhookClient
 
 # +----------------------------------------------------------------------------------------------------------+
 # |                                                  SLACK                                                   |

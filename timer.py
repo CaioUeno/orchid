@@ -1,7 +1,7 @@
+import logging
+from datetime import timedelta
 from time import perf_counter, sleep
 from typing import Any, Callable
-from datetime import timedelta
-import logging
 
 
 def timer(logger: logging.Logger = None, level: str = "INFO") -> Callable:
