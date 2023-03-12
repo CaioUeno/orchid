@@ -1,6 +1,5 @@
 from time import sleep
 from typing import Any, Callable, Dict, Hashable, Iterable
-from timer import timer
 
 
 def cache(max_size: int) -> Callable:
@@ -51,14 +50,14 @@ def cache(max_size: int) -> Callable:
     return wrapper
 
 
-@timer(level=None)
-@cache(max_size=1)
-def dummy_sleeper(seconds: int):
-    sleep(seconds)
-    return seconds
+# @timer(level=None)
+# @cache(max_size=1)
+# def dummy_sleeper(seconds: int):
+#     sleep(seconds)
+#     return seconds
 
 
-dummy_sleeper(5)
-dummy_sleeper(5)
-dummy_sleeper(3)
-dummy_sleeper(3)
+# dummy_sleeper(5)
+# dummy_sleeper(5)
+# dummy_sleeper(3)
+# dummy_sleeper(3)

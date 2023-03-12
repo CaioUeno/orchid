@@ -3,8 +3,6 @@ from typing import Any, Callable, Iterable, List
 
 from joblib import Parallel, delayed
 
-from timer import timer
-
 
 def parallelize(parallelism: int, prefer: str = "processes") -> Callable:
     """
@@ -36,10 +34,10 @@ def parallelize(parallelism: int, prefer: str = "processes") -> Callable:
     return wrapper
 
 
-@timer(logger=None)
-@parallelize(parallelism=20)
-def dummy_sleeper(items: List[float]) -> List[float]:
-    return [sleep(item) for item in items]
+# @timer(logger=None)
+# @parallelize(parallelism=20)
+# def dummy_sleeper(items: List[float]) -> List[float]:
+#     return [sleep(item) for item in items]
 
 
-dummy_sleeper([1 for _ in range(60)])
+# dummy_sleeper([1 for _ in range(60)])

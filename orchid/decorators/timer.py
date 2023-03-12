@@ -1,6 +1,6 @@
 import logging
 from datetime import timedelta
-from time import perf_counter, sleep
+from time import perf_counter
 from typing import Any, Callable
 
 
@@ -34,12 +34,3 @@ def timer(logger: logging.Logger = None, level: str = "INFO") -> Callable:
         return inner
 
     return wrapper
-
-
-@timer(logger=None)
-def example(seconds: int = 3):
-    sleep(seconds)
-
-
-example()
-example(61)

@@ -24,6 +24,7 @@ from slack_sdk.webhook import WebhookClient
 
 
 def get_userid(app: str) -> str:
+    """Utils function"""
     with open("webhooks.json") as file:
         webhooks = json.load(file)
         try:
@@ -35,6 +36,7 @@ def get_userid(app: str) -> str:
 
 
 def get_webhook(app: str, name: str) -> Union[WebhookClient, DiscordWebhook]:
+    """Utils function"""
     wb_mapping = {"slack": WebhookClient, "discord": DiscordWebhook}
     with open("webhooks.json") as file:
         webhooks = json.load(file)
@@ -146,21 +148,21 @@ def hermes(app: str, name: str, tag: str = None, timestamp: bool = False) -> Cal
     return wrapper
 
 
-SLACK_USER_ID = get_userid("slack")
-DISCORD_USER_ID = get_userid("discord")
+# SLACK_USER_ID = get_userid("slack")
+# DISCORD_USER_ID = get_userid("discord")
 
 
-@hermes(app="slack", name="clair", tag=SLACK_USER_ID, timestamp=True)
-def example1(seconds: int = 2) -> None:
-    sleep(seconds)
+# @hermes(app="slack", name="clair", tag=SLACK_USER_ID, timestamp=True)
+# def example1(seconds: int = 2) -> None:
+#     sleep(seconds)
 
 
-@hermes(app="discord", name="clair", tag=DISCORD_USER_ID, timestamp=True)
-def example2(a: Any) -> None:
-    # force an error
-    raise ValueError(f"Raising an error!")
+# @hermes(app="discord", name="clair", tag=DISCORD_USER_ID, timestamp=True)
+# def example2(a: Any) -> None:
+#     # force an error
+#     raise ValueError(f"Raising an error!")
 
 
-# calling decorated functions
-example1(seconds=3)
-example2(None)
+# # calling decorated functions
+# example1(seconds=3)
+# example2(None)

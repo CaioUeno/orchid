@@ -44,35 +44,35 @@ def exception_handler(
     return wrapper
 
 
-HANDLERS = {
-    ValueError: [
-        (print, ["value error handled"], None),
-    ],
-    TypeError: [(print, ["type error detected B)"], None)],
-}
+# HANDLERS = {
+#     ValueError: [
+#         (print, ["value error handled"], None),
+#     ],
+#     TypeError: [(print, ["type error detected B)"], None)],
+# }
 
 
-@exception_handler(handlers=HANDLERS)
-def unknown_exception():
-    raise Exception("This exception class is *not* in handlers")
+# @exception_handler(handlers=HANDLERS)
+# def unknown_exception():
+#     raise Exception("This exception class is *not* in handlers")
 
 
-@exception_handler(
-    handlers=HANDLERS,
-    exception_return="unsuccessful call :(",
-)
-def value_error_exception():
-    raise ValueError("Value not supported.")
+# @exception_handler(
+#     handlers=HANDLERS,
+#     exception_return="unsuccessful call :(",
+# )
+# def value_error_exception():
+#     raise ValueError("Value not supported.")
 
 
-@exception_handler(
-    handlers=HANDLERS,
-    exception_return="unsuccessful call :(",
-)
-def type_error_exception():
-    raise TypeError("Type not supported.")
+# @exception_handler(
+#     handlers=HANDLERS,
+#     exception_return="unsuccessful call :(",
+# )
+# def type_error_exception():
+#     raise TypeError("Type not supported.")
 
 
-print(value_error_exception())
-print(type_error_exception())
-print(unknown_exception())
+# print(value_error_exception())
+# print(type_error_exception())
+# print(unknown_exception())
