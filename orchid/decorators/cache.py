@@ -1,9 +1,15 @@
-from time import sleep
-from typing import Any, Callable, Dict, Hashable, Iterable
+from typing import Any, Callable, Dict, Hashable, Iterable, Union
 
 
-def cache(max_size: int) -> Callable:
-    """ """
+def cache(max_size: Union[int, None]) -> Callable:
+    """
+    Decorator to optimize a function call using cache.
+
+    Parameters
+    ----------
+        max_size : int
+            Maximum cache's size.
+    """
 
     def check_params(args: Iterable[Any], kwargs: Dict[str, Any]) -> bool:
         for arg in args:
@@ -38,26 +44,14 @@ def cache(max_size: int) -> Callable:
                 key = hash_params(args, kwargs)
 
                 if key not in _cache:
-                    if len(_cache) == max_size:
-                        return func(*args, **kwargs)
-                    else:
+                    if max_size is None or len(_cache) < max_size:
                         _cache[key] = func(*args, **kwargs)
+
+                    else:
+                        return func(*args, **kwargs)
 
                 return _cache[key]
 
         return inner
 
     return wrapper
-
-
-# @timer(level=None)
-# @cache(max_size=1)
-# def dummy_sleeper(seconds: int):
-#     sleep(seconds)
-#     return seconds
-
-
-# dummy_sleeper(5)
-# dummy_sleeper(5)
-# dummy_sleeper(3)
-# dummy_sleeper(3)
