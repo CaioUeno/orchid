@@ -3,3 +3,4 @@ __pycache__/
 webhooks.json
 .pytest_cache/
 dist/
+poetry.lock
