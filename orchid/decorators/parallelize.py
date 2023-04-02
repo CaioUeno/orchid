@@ -10,8 +10,10 @@ def parallelize(parallelism: int, prefer: str = "processes") -> Callable:
 
     Parameters
     ----------
-        parallelism (int) : how many parallel processes/threads to use;
-        prefer (str) : argument for joblib Parallel class {`threads`, `processes`}.
+        parallelism : int
+            How many parallel processes/threads to use;
+        prefer : str
+            Argument for joblib Parallel class {`threads`, `processes`}.
     """
 
     def split(iterable: Iterable, n: int) -> List[Iterable]:
@@ -31,12 +33,3 @@ def parallelize(parallelism: int, prefer: str = "processes") -> Callable:
         return inner
 
     return wrapper
-
-
-# @timer(logger=None)
-# @parallelize(parallelism=20)
-# def dummy_sleeper(items: List[float]) -> List[float]:
-#     return [sleep(item) for item in items]
-
-
-# dummy_sleeper([1 for _ in range(60)])

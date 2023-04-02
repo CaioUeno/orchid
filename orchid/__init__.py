@@ -1,4 +1,4 @@
-from .decorators import cache, parallelize, timer, hermes
+from .decorators import cache, hermes, parallelize, timer
 
 __all__ = ["cache", "parallelize", "timer", "hermes"]
 

@@ -10,8 +10,10 @@ def timer(logger: logging.Logger = None, level: str = "INFO") -> Callable:
 
     Parameters
     ----------
-        logger (logging.Logger) : logger object to log the run time as a message;
-        level (str) : logger level to use when logger parameter is given.
+        logger : logging.Logger
+            Logger object to log the run time as a message;
+        level : str
+            Logger level to use when logger parameter is given.
     """
 
     def wrapper(func: Callable[..., Any]) -> Callable:
